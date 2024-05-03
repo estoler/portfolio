@@ -192,19 +192,23 @@ def notifySlack(password):
         start_time = time.time()
 
 def main():
-    checkCLIVersion()
+    try:
+        checkCLIVersion()
 
-    parsedPasswords = getPasswords(selectedVault)
+        parsedPasswords = getPasswords(selectedVault)
 
-    expired_pw_count = 0 # Counter for expired passwords
-    for password in tqdm(parsedPasswords):
-        if isExpired(password, max_age_days):
-            notifySlack(password)
-            expired_pw_count += 1
-    
-    print("\n🎉 Users have been notified about their expired passwords! 🎉")
-    print("Total expired passwords: ", expired_pw_count, "\n")
-    signOut()
+        expired_pw_count = 0 # Counter for expired passwords
+        for password in tqdm(parsedPasswords):
+            if isExpired(password, max_age_days):
+                notifySlack(password)
+                expired_pw_count += 1
+        
+        print("\n🎉 Users have been notified about their expired passwords! 🎉")
+        print(f"🔐 Total expired passwords: {expired_pw_count}\n")
+    except Exception as e:
+        print(f"An error occurred: {e}")
+    finally:
+        signOut()
 
 main()
 

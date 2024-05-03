@@ -1,0 +1,9 @@
+*.csv
+*.zip
+.DS_Store
+local.env
+*.log
+*.xlsx
+*.ai
+*.txt
+todo.*
