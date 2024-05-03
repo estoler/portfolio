@@ -6,4 +6,4 @@ local.env
 *.xlsx
 *.ai
 *.txt
-todo.*
+wip*.*
