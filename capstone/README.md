@@ -14,7 +14,7 @@ The team is interested in answering the following questions by analyzing trends 
 1. #### Why would casual riders buy Cyclistic annual memberships?
 1. #### How can Cyclistic use digital media to influence casual riders to become members?
 
-> For more information see [the full case study here](/rstudio/capstone/Case-Study-1_How-does-a-bike-shared-navigate-speedy-success_-2.pdf)
+> For more information see [the full case study here](/capstone/Case-Study-1_How-does-a-bike-shared-navigate-speedy-success_-2.pdf)
 
 ## Data Sources
 
@@ -30,7 +30,7 @@ This case study reports on bike data between *__March 2020  - February 2024__*, 
 
 ### Project Tables
 
-`tripdata` - The original data ingested and collected into a single table using [this schema](/rstudio/capstone/table_schema.json)
+`tripdata` - The original data ingested and collected into a single table using [this schema](/capstone/table_schema.json)
 
 | Info                    |                                                          |
 | :---------------------  | :------------------------------------------------------- |
@@ -72,7 +72,7 @@ The original data downloaded from the Provider contained 45 individual CSV files
 
 #### Create New Trip Data Table
 
-> Reference [create_cleaned_tripdata.sql](/rstudio/capstone/queries/create_cleaned_tripdata.sql) for the below cleaning process.
+> Reference [create_cleaned_tripdata.sql](/capstone/queries/create_cleaned_tripdata.sql) for the below cleaning process.
 
 The following fields were created using calculations from existing columns:
 
@@ -82,7 +82,7 @@ The following fields were created using calculations from existing columns:
 
 #### Create Station Table
 
-> Reference [create_stations.sql](/rstudio/capstone/queries/create_stations.sql) for the below cleaning process.
+> Reference [create_stations.sql](/capstone/queries/create_stations.sql) for the below cleaning process.
 
 Upon further analysis, I realized that not all rides had valid station info.
 
@@ -97,17 +97,17 @@ Stations and their ridership trends were not analyzed as part of this phase of t
 
 ## Analysis
 
-> Reference [analysis.py](/rstudio/capstone/analysis.py) for the below analysis.
+> Reference [analysis.py](/capstone/analysis.py) for the below analysis.
 
-[daily_summary.sql](/rstudio/capstone/queries/daily_summary.sql)
+[daily_summary.sql](/capstone/queries/daily_summary.sql)
 
 Creates a JSON-formatted result for each month of trip data and breaks down ride information by day of the week.
 
-[monthly_member_stats.sql](/rstudio/capstone/queries/monthly_member_stats.sql)
+[monthly_member_stats.sql](/capstone/queries/monthly_member_stats.sql)
 
 Creates a JSON-formatted result that details system usage per member type for trip summary statistics, number of total rides and top stations during each month.
 
-[random_sampling.sql](/rstudio/capstone/queries/random_sampling.sql)
+[random_sampling.sql](/capstone/queries/random_sampling.sql)
 
 Pulls a random sample for one percent of the total trip data to be analyzed in the different charts used in this study.
 
@@ -117,13 +117,13 @@ Pulls a random sample for one percent of the total trip data to be analyzed in t
 
 Overall, annual members take more rides versus casual members.
 
-![Member Type Breakdown](/rstudio/capstone/figures/member_type_breakdown.png)
+![Member Type Breakdown](/capstone/figures/member_type_breakdown.png)
 
 ### Bike Type Usage by Member Type
 
 Which type of bikes are used is relatively similar per member type.
 
-![Member Type Breakdown](/rstudio/capstone/figures/bike_type_breakdown.png)
+![Member Type Breakdown](/capstone/figures/bike_type_breakdown.png)
 
 Casual members typically use __electronic bikes__ which have a total of __3,268,968__ rides.
 
@@ -133,7 +133,7 @@ Annual members typically use __classic bikes__ which have a total of __5,422,506
 
 While casual members take less bike trips overall, they tend to have a longer trip duration when compared to annual members. Overall, average trip duration has been declining for casual members while trip duration for annual members is steady between 10 and 25 minutes.
 
-![Average trip duration](/rstudio/capstone/figures/avg_duration.png)
+![Average trip duration](/capstone/figures/avg_duration.png)
 
 __Casual Members:__ 32 minutes 21 seconds
 __Annual Members:__ 12 minutes 43 seconds
@@ -142,13 +142,13 @@ __Annual Members:__ 12 minutes 43 seconds
 
 Number of trips taken is directly coorelated to the season. July - October are peak usage months for the Cyclistic system.
 
-![Total rides per member type](/rstudio/capstone/figures/total_rides.png)
+![Total rides per member type](/capstone/figures/total_rides.png)
 
 ### Top Start Stations per Member Type
 
 The aid a targeted marketing campaing, it would be helpful to know which stations riders most frequently start their trips at.
 
-![Top Start Stations per Member Type](/rstudio/capstone/figures/top_start_stations_per_member_type.png)
+![Top Start Stations per Member Type](/capstone/figures/top_start_stations_per_member_type.png)
 
 This chart is ordered by total number of trips taken despite member type but overall but we can see that casual riders mainly start their trips at the __Streeter Dr and Graned Ave__ station.
 
