@@ -1,4 +1,4 @@
-CREATE OR REPLACE TABLE `gwg-capstone-419217.cyclistic.cleaned_stations` AS(
+CREATE OR REPLACE TABLE `gwg-capstone-419217.cyclistic.cleaned-stations` AS(
   -- WITH FullList AS(
     WITH FixedFalse AS(
       WITH StationList AS (
@@ -7,7 +7,7 @@ CREATE OR REPLACE TABLE `gwg-capstone-419217.cyclistic.cleaned_stations` AS(
             DISTINCT start_station_name,
             STRING_AGG(DISTINCT start_station_id, ', ' ORDER BY start_station_id) AS start_ids
           FROM
-            `gwg-capstone-419217.cyclistic.cleaned-divvy-tripdata`
+            `gwg-capstone-419217.cyclistic.cleaned-tripdata`
           GROUP BY 1 
         ),
           EndStations AS (
@@ -15,7 +15,7 @@ CREATE OR REPLACE TABLE `gwg-capstone-419217.cyclistic.cleaned_stations` AS(
             DISTINCT end_station_name,
             STRING_AGG(DISTINCT end_station_id, ', 'ORDER BY end_station_id) AS end_ids
           FROM
-            `gwg-capstone-419217.cyclistic.cleaned-divvy-tripdata`
+            `gwg-capstone-419217.cyclistic.cleaned-tripdata`
           GROUP BY 1 
         )
         SELECT

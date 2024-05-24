@@ -8,7 +8,7 @@ WITH MonthDayMetrics AS(
     FORMAT_TIMESTAMP('%H:%M:%S', TIMESTAMP_SECONDS(CAST(AVG(trip_duration_seconds) AS INT64))) AS avg_duration,
     member_type
   FROM
-    `gwg-capstone-419217.cyclistic.cleaned-divvy-tripdata` td
+    `gwg-capstone-419217.cyclistic.cleaned-tripdata` td
   GROUP BY
     year_month,
     start_day_of_week,
@@ -48,7 +48,7 @@ TotalMetrics AS (
     member_type,
     CAST(NULL AS BOOL) AS is_max_rides
   FROM
-    `gwg-capstone-419217.cyclistic.cleaned-divvy-tripdata` td
+    `gwg-capstone-419217.cyclistic.cleaned-tripdata` td
   GROUP BY
     year_month,
     member_type

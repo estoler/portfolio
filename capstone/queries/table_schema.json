@@ -13,12 +13,12 @@
     },
     {
         "name": "started_at",
-        "type": "STRING",
+        "type": "TIMESTAMP",
         "mode": "NULLABLE"
     },
     {
         "name": "ended_at",
-        "type": "STRING",
+        "type": "TIMESTAMP",
         "mode": "NULLABLE"
     },
     {
@@ -43,22 +43,22 @@
     },
     {
         "name": "start_lat",
-        "type": "STRING",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
         "name": "start_lng",
-        "type": "STRING",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
         "name": "end_lat",
-        "type": "STRING",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
         "name": "end_lng",
-        "type": "STRING",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {

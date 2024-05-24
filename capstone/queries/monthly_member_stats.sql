@@ -7,7 +7,7 @@ WITH tripdata AS (
     start_station_name,
     start_station_uuid
   FROM
-    `gwg-capstone-419217.cyclistic.cleaned-divvy-tripdata` 
+    `gwg-capstone-419217.cyclistic.cleaned-tripdata` 
   WHERE
     trip_duration_seconds > 0
 ),
@@ -26,11 +26,11 @@ top_stations AS (
     station_name,
     UUID
 ),
-top_10_stations AS (
+top_5_stations AS (
   SELECT 
     year_month,
     member_type,
-    ARRAY_AGG(STRUCT(station_name, UUID, total_rides) ORDER BY total_rides DESC LIMIT 10) AS top_station
+    ARRAY_AGG(STRUCT(station_name, UUID, total_rides) ORDER BY total_rides DESC LIMIT 5) AS top_station
   FROM
     top_stations
   GROUP BY
@@ -73,7 +73,7 @@ SELECT
         FORMAT_TIMESTAMP('%H:%M:%S', TIMESTAMP_SECONDS(MAX(IF(member_type = 'member', trip_duration_seconds, NULL)))) AS max_duration,
         FORMAT_TIMESTAMP('%H:%M:%S', TIMESTAMP_SECONDS(CAST(AVG(IF(member_type = 'member', trip_duration_seconds, NULL)) AS INT64))) AS avg_duration,
         (SELECT ARRAY_AGG(STRUCT(bike_type, total_rides)) FROM bike_usage WHERE year_month = td.year_month AND member_type = 'member') AS bike_usage,
-        (SELECT top_station FROM top_10_stations WHERE year_month = td.year_month AND member_type = 'member') AS top_station
+        (SELECT top_station FROM top_5_stations WHERE year_month = td.year_month AND member_type = 'member') AS top_station
       ),
       STRUCT(
         'casual' AS member_type,
@@ -81,7 +81,7 @@ SELECT
         FORMAT_TIMESTAMP('%H:%M:%S', TIMESTAMP_SECONDS(MAX(IF(member_type = 'casual', trip_duration_seconds, NULL)))) AS max_duration,
         FORMAT_TIMESTAMP('%H:%M:%S', TIMESTAMP_SECONDS(CAST(AVG(IF(member_type = 'casual', trip_duration_seconds, NULL)) AS INT64))) AS avg_duration,
         (SELECT ARRAY_AGG(STRUCT(bike_type, total_rides)) FROM bike_usage WHERE year_month = td.year_month AND member_type = 'casual') AS bike_usage,
-        (SELECT top_station FROM top_10_stations WHERE year_month = td.year_month AND member_type = 'casual') AS top_station
+        (SELECT top_station FROM top_5_stations WHERE year_month = td.year_month AND member_type = 'casual') AS top_station
       )
   ] AS member_usage
 FROM
